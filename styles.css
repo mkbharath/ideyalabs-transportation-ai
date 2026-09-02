@@ -124,8 +124,8 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 1px 0 rgba(11,26,43,.02);
 }
 .site-header .wrap {
-  display: flex; align-items: center; gap: 18px;
-  height: 66px; flex-wrap: nowrap;
+  display: flex; align-items: center; gap: 14px 18px;
+  min-height: 66px; flex-wrap: wrap; padding-top: 8px; padding-bottom: 8px;
 }
 .brand-mark { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; min-width: 0; }
 .brand-mark:hover { text-decoration: none; }
@@ -137,9 +137,9 @@ a:hover { text-decoration: underline; }
 }
 
 .nav {
-  display: flex; align-items: center; gap: 2px;
+  display: flex; align-items: center; gap: 2px 4px;
   margin-left: auto; flex: 1 1 auto; justify-content: flex-end;
-  min-width: 0; overflow: hidden; flex-wrap: nowrap;
+  min-width: 0; flex-wrap: wrap;
 }
 .nav a {
   position: relative;
