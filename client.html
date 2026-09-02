@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700;800;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=18" />
+<link rel="stylesheet" href="styles.css?v=19" />
 <script>
 (function(){try{var t=localStorage.getItem('theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
@@ -22,8 +22,20 @@
       <span class="brand-context">Transportation AI Roadmap</span>
     </a>
     <nav class="nav" aria-label="Section navigation">
+      <a href="index.html#summary">Summary</a>
+      <a href="index.html#recommendations">Top 3/5/7</a>
       <a href="index.html#scorecard">Scorecard</a>
-      <a href="market.html?view=clients">Existing Clients</a>
+      <a href="index.html#sequence">Sequence</a>
+      <div class="nav-more">
+        <button class="nav-more-btn" type="button" aria-haspopup="true" aria-expanded="false">Sections <span class="caret">▾</span></button>
+        <div class="nav-more-menu">
+          <a href="index.html#glance">At a Glance</a>
+          <a href="index.html#consolidation">Consolidation</a>
+          <a href="index.html#revenue">Revenue &amp; ROI</a>
+          <a href="index.html#whitespace">Whitespace</a>
+          <a href="index.html#platform">Platform</a>
+        </div>
+      </div>
       <a href="market.html">Client &amp; Market</a>
       <a href="intersection.html">Intersection</a>
     </nav>
@@ -53,8 +65,8 @@
   </div>
 </footer>
 
-<script src="market-data.js?v=18"></script>
-<script src="app.js?v=18"></script>
-<script src="client.js?v=18"></script>
+<script src="market-data.js?v=19"></script>
+<script src="app.js?v=19"></script>
+<script src="client.js?v=19"></script>
 </body>
 </html>

@@ -284,3 +284,25 @@ window.addEventListener("DOMContentLoaded", function () {
   if (document.readyState !== "loading") bind();
   else window.addEventListener("DOMContentLoaded", bind);
 })();
+
+/* ---------- Nav "Sections" dropdown ---------- */
+(function () {
+  function bind() {
+    var more = document.querySelector(".nav-more");
+    if (!more) return;
+    var btn = more.querySelector(".nav-more-btn");
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = more.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    document.addEventListener("click", function (e) {
+      if (!more.contains(e.target)) { more.classList.remove("open"); btn.setAttribute("aria-expanded","false"); }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") { more.classList.remove("open"); btn.setAttribute("aria-expanded","false"); }
+    });
+  }
+  if (document.readyState !== "loading") bind();
+  else window.addEventListener("DOMContentLoaded", bind);
+})();

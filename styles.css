@@ -137,14 +137,14 @@ a:hover { text-decoration: underline; }
 }
 
 .nav {
-  display: flex; align-items: center; gap: 2px 4px;
-  margin-left: auto; flex: 1 1 auto; justify-content: flex-end;
-  min-width: 0; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 2px; flex-wrap: nowrap;
+  margin-left: auto; flex: 0 1 auto; justify-content: flex-end;
+  white-space: nowrap;
 }
 .nav a {
   position: relative;
-  color: var(--text-muted); font-size: 13.5px; font-weight: 550;
-  padding: 7px 11px; border-radius: 8px; white-space: nowrap;
+  color: var(--text-muted); font-size: 13px; font-weight: 550;
+  padding: 7px 9px; border-radius: 8px; white-space: nowrap;
   transition: color .15s, background .15s;
 }
 .nav a:hover { color: var(--text); background: var(--bg-subtle); text-decoration: none; }
@@ -153,6 +153,28 @@ a:hover { text-decoration: underline; }
   content: ""; position: absolute; left: 11px; right: 11px; bottom: 2px; height: 2px;
   border-radius: 2px; background: var(--accent);
 }
+
+
+/* Nav dropdown (overflow sections) */
+.nav-more { position: relative; }
+.nav-more-btn {
+  font-family: inherit; cursor: pointer; border: none; background: transparent;
+  color: var(--text-muted); font-size: 13px; font-weight: 550; padding: 7px 9px; border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;
+}
+.nav-more-btn:hover { color: var(--text); background: var(--bg-subtle); }
+.nav-more-btn .caret { font-size: 9px; opacity: .7; }
+.nav-more-menu {
+  position: absolute; top: calc(100% + 6px); right: 0; min-width: 190px;
+  background: var(--bg-elev); border: 1px solid var(--border-strong); border-radius: 12px;
+  box-shadow: var(--shadow-lg); padding: 6px; display: none; z-index: 60;
+}
+.nav-more.open .nav-more-menu { display: block; }
+.nav-more-menu a {
+  display: block; padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 550;
+  color: var(--text-muted); white-space: nowrap; text-decoration: none;
+}
+.nav-more-menu a:hover { background: var(--bg-subtle); color: var(--text); text-decoration: none; }
 
 .theme-toggle {
   flex: 0 0 auto;
