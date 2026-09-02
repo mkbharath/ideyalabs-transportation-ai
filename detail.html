@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agent detail — ideyaLabs Transportation AI Roadmap</title>
+<link rel="icon" href="assets/ideyalabs-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=16" />
+<script>
+(function(){try{var t=localStorage.getItem('theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand-mark" href="index.html#top" aria-label="ideyaLabs home">
+      <img class="brand-logo" src="assets/ideyalabs-logo.png" alt="ideyaLabs" />
+      <span class="brand-sep" aria-hidden="true"></span>
+      <span class="brand-context">Transportation AI Roadmap</span>
+    </a>
+    <nav class="nav" aria-label="Section navigation">
+      <a href="index.html#recommendations">Top 3/5/7</a>
+      <a href="index.html#scorecard">Scorecard</a>
+      <a href="index.html#sequence">Sequence</a>
+      <a href="market.html">Client &amp; Market</a>
+      <a href="intersection.html">Intersection</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:44px 0 32px" aria-labelledby="d-title">
+    <div class="wrap">
+      <a href="index.html#scorecard" class="backlink" style="display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;margin-bottom:16px">← All products</a>
+      <div id="d-badges" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
+      <h1 id="d-title" style="font-size:clamp(26px,4vw,40px)">Loading…</h1>
+      <p id="d-tagline" class="lede"></p>
+      <div id="d-source" class="hero-meta"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:36px" aria-label="Detail">
+    <div class="wrap">
+      <div id="d-notfound" class="callout warn" style="display:none">
+        Product not found. <a href="index.html#scorecard">Return to the scorecard</a>.
+      </div>
+      <div id="d-body" class="detail-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>ideyaLabs · Priority Assessment &amp; Implementation Roadmap · Confidential — Internal Leadership Decision Document.</span>
+    <span id="d-provenance">Detail grounded in the source documents in the project folder.</span>
+  </div>
+</footer>
+
+<script src="data.js?v=16"></script>
+<script src="market-data.js?v=16"></script>
+<script src="app.js?v=16"></script>
+<script src="detail.js?v=16"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Customer × Solution Intersection — ideyaLabs Transportation AI</title>
+<meta name="description" content="Where customer problems intersect with Transportation AI solutions — build once, deploy to many." />
+<link rel="icon" href="assets/ideyalabs-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=16" />
+<script>
+(function(){try{var t=localStorage.getItem('theme')||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand-mark" href="index.html#top" aria-label="ideyaLabs home">
+      <img class="brand-logo" src="assets/ideyalabs-logo.png" alt="ideyaLabs" />
+      <span class="brand-sep" aria-hidden="true"></span>
+      <span class="brand-context">Transportation AI Roadmap</span>
+    </a>
+    <nav class="nav" aria-label="Section navigation">
+      <a href="index.html#scorecard">Scorecard</a>
+      <a href="index.html#sequence">Sequence</a>
+      <a href="market.html">Client &amp; Market</a>
+      <a href="intersection.html" class="active">Intersection</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:44px 0 24px" aria-labelledby="ix-title">
+    <div class="wrap">
+      <div class="eyebrow">Strategic Analysis · Build once → deploy to many</div>
+      <h1 id="ix-title" style="font-size:clamp(26px,4vw,40px)">Customer × Solution Intersection Analysis</h1>
+      <p class="lede">Where do our customers' problems intersect with our Transportation AI solutions — and which agents can be built once and deployed across multiple customers? Every score here is a calculated assessment from the source-grounded fit analysis.</p>
+    </div>
+  </section>
+
+  <div class="mtabs-wrap"><div class="wrap-wide"><nav id="ixtabs" class="mtabs" aria-label="Intersection views"></nav></div></div>
+
+  <section style="padding-top:28px" aria-label="Intersection view">
+    <div class="wrap-wide"><div id="ixv"></div></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>ideyaLabs · Customer × Solution Intersection Analysis · Confidential — Internal Strategy.</span>
+    <span>Scores are calculated assessments from the source analysis; customer problems and relationships are only those evidenced in the source documents.</span>
+  </div>
+</footer>
+
+<script src="intersection-data.js?v=16"></script>
+<script src="app.js?v=16"></script>
+<script src="intersection.js?v=16"></script>
+</body>
+</html>

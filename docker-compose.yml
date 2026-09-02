@@ -1,0 +1,8 @@
+services:
+  roadmap:
+    build: .
+    image: ideyalabs-roadmap:latest
+    container_name: ideyalabs-roadmap
+    ports:
+      - "${PORT:-8088}:80"
+    restart: unless-stopped
