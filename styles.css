@@ -875,3 +875,41 @@ section > h2, .section-title { font-weight: 700; }
 
 /* Sidebar active gets a slightly stronger fill */
 .sb-link.active { background: color-mix(in srgb, var(--brand) 14%, transparent); color: var(--brand-text); border-left-color: var(--brand); font-weight: 700; }
+
+/* ============================================================
+   v25 fixes — kicker pill, standout sidebar groups, heading polish
+   ============================================================ */
+
+/* Section label ("kicker") = compact inline pill that hugs its text,
+   NOT a full-width strip. Overrides the earlier full-width orange band. */
+.section-head { margin-bottom: 30px; }
+.kicker, .section-eyebrow {
+  display: inline-flex !important; align-items: center; width: auto !important;
+  background: var(--accent) !important; color: #fff !important;
+  font-family: var(--font-display);
+  font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 6px 14px !important; border-radius: 999px !important;
+  margin-bottom: 16px !important; box-shadow: 0 2px 6px rgba(231,118,37,.28);
+}
+/* hero eyebrow: same pill treatment for consistency */
+.eyebrow { padding: 7px 16px; border-radius: 999px; }
+
+/* Bigger, sharper section headings */
+.section-head h2, section > h2, .section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 40px) !important; font-weight: 700; letter-spacing: -.03em;
+  line-height: 1.1; color: var(--text-strong);
+}
+
+/* ---- Sidebar groups clearly stand out ---- */
+.sb-group + .sb-group { margin-top: 10px; padding-top: 20px; border-top: 1px solid var(--border-strong); }
+.sb-group-title {
+  font-family: var(--font-display);
+  font-size: 13px !important; font-weight: 700 !important; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--brand-text) !important;
+  padding: 4px 12px 10px !important; display: flex; align-items: center; gap: 8px;
+}
+.sb-group-title::before {
+  content: ""; width: 14px; height: 3px; border-radius: 2px; background: var(--accent);
+  flex: 0 0 auto;
+}
