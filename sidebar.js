@@ -62,46 +62,48 @@
   function setupScrollSpy(sb){
     if (!isIndex) return;
     var linkFor = {};
-    var targets = [];
+    // ordered list of {id, el}; "top" (the <main> wrapper) is the Overview anchor
+    var sections = [];
     sb.querySelectorAll(".sb-link[data-target]").forEach(function(a){
       var id = a.getAttribute("data-target");
       linkFor[id] = a;
+      if (id === "top") return;              // Overview handled separately (scroll near 0)
       var el = document.getElementById(id);
-      if (el) targets.push(el);
+      if (el) sections.push({ id: id, el: el });
     });
-    if (!targets.length) return;
+    if (!sections.length) return;
 
     function activate(id){
+      var cur = sb.querySelector(".sb-link.active");
+      if (cur && cur.getAttribute("data-target") === id) return; // no-op if unchanged
       sb.querySelectorAll(".sb-link.active").forEach(function(a){ a.classList.remove("active"); });
       var a = linkFor[id];
       if (a) a.classList.add("active");
     }
 
-    var visible = {};
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) visible[e.target.id] = true;
-        else delete visible[e.target.id];
-      });
-      var best = null, bestTop = Infinity;
-      targets.forEach(function(t){
-        if (visible[t.id]) {
-          var top = t.getBoundingClientRect().top;
-          if (top < bestTop) { bestTop = top; best = t.id; }
-        }
-      });
-      if (best) activate(best);
-    }, { rootMargin: "-12% 0px -70% 0px", threshold: 0 });
-
-    targets.forEach(function(t){ obs.observe(t); });
-
-    function edgeCheck(){
-      if (window.scrollY < 40) activate("top");
-      else if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) activate(targets[targets.length-1].id);
+    var LINE = 140; // reference line below the viewport top
+    var ticking = false;
+    function update(){
+      ticking = false;
+      var scrollBottom = window.innerHeight + window.scrollY;
+      // at the very bottom, force the last section
+      if (scrollBottom >= document.body.scrollHeight - 4) {
+        activate(sections[sections.length - 1].id); return;
+      }
+      // find the last section whose top has crossed the reference line
+      var currentId = "top";
+      for (var i = 0; i < sections.length; i++) {
+        var top = sections[i].el.getBoundingClientRect().top;
+        if (top <= LINE) currentId = sections[i].id;
+        else break; // sections are in document order; first one below the line stops us
+      }
+      activate(currentId);
     }
-    window.addEventListener("scroll", edgeCheck, { passive: true });
-    activate((location.hash || "#top").slice(1) || "top");
-    edgeCheck();
+    function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    // initial state (respect an incoming #hash, else compute from scroll position)
+    update();
   }
 
   function init(){
