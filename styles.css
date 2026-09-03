@@ -1154,14 +1154,14 @@ body, p, li, td, .card p, .detail-card p, .rec-card p, .qa-item .a,
 
 /* ---- Sidebar group labels: distinct colors so they stand out ---- */
 .sb-group:nth-child(1) .sb-group-title {
-  color: var(--brand-text) !important;
+  color: var(--accent-text) !important;
   font-size: 12px !important; font-weight: 800 !important; letter-spacing: .1em;
 }
 .sb-group:nth-child(2) .sb-group-title {
   color: var(--accent-text) !important;
   font-size: 12px !important; font-weight: 800 !important; letter-spacing: .1em;
 }
-.sb-group:nth-child(1) .sb-group-title::before { background: var(--brand) !important; }
+.sb-group:nth-child(1) .sb-group-title::before { background: var(--accent) !important; }
 .sb-group:nth-child(2) .sb-group-title::before { background: var(--accent) !important; }
 .sb-group-title::before {
   content: ""; display: inline-block; width: 16px; height: 3px; border-radius: 2px;
