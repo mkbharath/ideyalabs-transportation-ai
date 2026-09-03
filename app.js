@@ -2,30 +2,13 @@
    All figures below are transcribed from the source roadmap document
    (ideyaLabs_Transportation_AI_Priority_Roadmap). No values are invented. */
 
-/* ---------- Theme toggle (default OS, manual override persisted) ---------- */
+/* ---------- Theme init (button handling is owned by sidebar.js) ---------- */
 (function () {
   var root = document.documentElement;
-  function apply(t) {
-    root.setAttribute("data-theme", t);
-    var btn = document.getElementById("themeToggle");
-    if (btn) {
-      btn.textContent = t === "dark" ? "\u2600\uFE0F" : "\uD83C\uDF19";
-      btn.setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme");
-    }
-  }
   var saved = null;
   try { saved = localStorage.getItem("theme"); } catch (e) {}
   var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  apply(saved || (prefersDark ? "dark" : "light"));
-  window.addEventListener("DOMContentLoaded", function () {
-    var btn = document.getElementById("themeToggle");
-    apply(root.getAttribute("data-theme")); // set icon
-    if (btn) btn.addEventListener("click", function () {
-      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      apply(next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
-    });
-  });
+  root.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
 })();
 
 /* ---------- Scorecard data (18 consolidated products) ---------- */
@@ -110,15 +93,15 @@ var TIER_DEFS = {
 var classLabel = { agent:"True Agent", assisted:"AI-Assisted", saas:"Traditional" };
 
 function cellColor(v) {
-  // 1-10 -> red..amber..green ramp
-  if (v >= 8) return "var(--tier1-soft)";
-  if (v >= 6) return "var(--tier3-soft)";
-  return "var(--tier4-soft)";
-}
-function cellText(v) {
+  // 1-10 -> solid ramp for crisp, readable score cells
   if (v >= 8) return "var(--tier1)";
   if (v >= 6) return "var(--tier3)";
+  if (v >= 4) return "var(--tier2)";
   return "var(--tier4)";
+}
+function cellText(v) {
+  // all solid fills use white text for maximum contrast
+  return "#fff";
 }
 
 var sortState = { key:"score", dir:-1 };
