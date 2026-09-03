@@ -1047,3 +1047,78 @@ body { font-size: 15.5px; }
 /* Hero: calmer, flatter background */
 .hero { background:
   radial-gradient(900px 360px at 100% -20%, var(--brand-soft) 0%, transparent 55%) !important; }
+
+/* ============================================================
+   v29 — refined card design
+   ============================================================ */
+
+/* Base card: crisper elevation, hairline ring, smooth hover lift */
+.card, .rec-card, .target-card, .opp-card, .merge-item, .ceo-card, .detail-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(15,32,56,.04), 0 1px 3px rgba(15,32,56,.06);
+  padding: 22px !important;
+  transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+}
+.card:hover, .rec-card:hover, .target-card:hover, .opp-card:hover, .ceo-card:hover {
+  box-shadow: 0 6px 20px -6px rgba(15,32,56,.16), 0 2px 6px rgba(15,32,56,.06);
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--border));
+}
+.card h3, .rec-card h3, .target-card h3, .opp-card h3, .ceo-card h3 {
+  font-size: 17px; font-weight: 750; color: var(--text-strong); letter-spacing: -.01em; margin: 0 0 4px;
+}
+
+/* ---- CEO "Build first" cards: designed, not plain ---- */
+.ceo-card {
+  position: relative; overflow: hidden; padding-top: 26px !important;
+  display: flex; flex-direction: column;
+}
+/* colored accent strip along the top */
+.ceo-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+}
+/* rank as a solid circular badge, top-right */
+.ceo-rank {
+  position: absolute; top: 14px; right: 16px;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: inline-grid; place-items: center;
+  background: var(--accent); color: #fff;
+  font-size: 13px; font-weight: 800; opacity: 1;
+  box-shadow: 0 2px 6px rgba(238,123,35,.35);
+}
+.ceo-card h3 { padding-right: 40px; }
+
+/* metric tiles: unified panel with dividers, bigger numbers */
+.ceo-metrics {
+  display: flex; gap: 0; margin: 14px 0 16px;
+  background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+}
+.ceo-metric {
+  text-align: center; flex: 1; padding: 14px 8px; background: transparent; border-radius: 0;
+  border-left: 1px solid var(--border);
+}
+.ceo-metric:first-child { border-left: 0; }
+.ceo-num { display: block; font-size: 24px; font-weight: 800; color: var(--brand-text); line-height: 1.1; }
+.ceo-lbl { font-size: 10.5px; font-weight: 600; letter-spacing: .02em; color: var(--text-faint); text-transform: uppercase; }
+
+.ceo-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+.ceo-common { font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px; padding-top: 12px; border-top: 1px solid var(--border); flex: 1 1 auto; }
+.ceo-common strong { color: var(--text-strong); }
+
+/* CTA becomes a subtle button-link at the card foot */
+.detail-cta {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: auto;
+  font-size: 13px; font-weight: 700; color: var(--brand-text);
+  padding: 8px 0; border-top: 0;
+}
+.detail-cta:hover { gap: 9px; text-decoration: none; }
+
+/* rec/target/opp cards: top accent + column layout for even footers */
+.rec-card, .target-card, .opp-card { display: flex; flex-direction: column; }
+
+/* Stat cards get a hover + slightly rounder corners to match */
+.stat { border-radius: 14px !important; transition: box-shadow .18s, transform .18s; }
+.stat:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }

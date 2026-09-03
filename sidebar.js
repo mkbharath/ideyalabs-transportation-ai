@@ -54,7 +54,7 @@
     +   '<button class="mb-toggle" id="mbToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>'
     +   '<a class="ab-brand" href="index.html#top" aria-label="ideyaLabs home"><img src="assets/ideyalabs-logo.png" alt="ideyaLabs" /></a>'
     + '</div>'
-    + '<a class="ab-product" href="index.html#top"><span class="ab-product-name">Transportation AI</span><span class="ab-product-sub">Priority Roadmap</span></a>'
+    + '<a class="ab-product" href="index.html#top"><span class="ab-product-name">Transportation Solutions Roadmap</span></a>'
     + '<div class="ab-right">'
     +   '<button id="themeToggle" class="ab-theme" type="button" aria-label="Toggle theme"><span class="sb-theme-ico">🌙</span></button>'
     +   '<span class="ab-avatar" aria-hidden="true">iL</span>'
