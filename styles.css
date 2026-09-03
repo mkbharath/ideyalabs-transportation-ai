@@ -1007,3 +1007,43 @@ a { color: var(--brand-text); font-weight: 600; }
   radial-gradient(1100px 420px at 100% -10%, var(--brand-soft) 0%, transparent 55%),
   radial-gradient(800px 360px at -5% 0%, var(--accent-soft) 0%, transparent 50%); }
 [data-theme="light"] body { background: var(--bg); }  /* drop the tinted body wash; IT 360 bg is flat */
+
+/* ============================================================
+   v28 — clean sans headings, quiet eyebrow, tighter density
+   ============================================================ */
+
+/* Headings use clean Inter (drop Space Grotesk character) */
+:root { --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+h1, h2, h3, h4, .num,
+.section-head h2, section > h2, .section-title,
+.ab-product-name, .sb-group-title, .qa-item .q,
+.card h3, .rec-card h3, .opp-card h3, .target-card h3, .detail-card h3, .ls-cat-head h3 {
+  font-family: var(--font-display) !important;
+}
+h1 { font-weight: 800; letter-spacing: -0.025em; }
+.section-head h2, section > h2, .section-title { font-weight: 750; letter-spacing: -0.02em; }
+
+/* Hero eyebrow becomes a quiet overline label (no loud orange banner) */
+.eyebrow {
+  display: inline-block !important; width: auto !important;
+  background: transparent !important; color: var(--text-faint) !important;
+  font-size: 11.5px !important; font-weight: 700 !important; letter-spacing: .1em !important;
+  text-transform: uppercase; padding: 0 !important; border-radius: 0 !important;
+  box-shadow: none !important; margin-bottom: 14px !important;
+}
+
+/* Tighter, more uniform density */
+.hero { padding: 40px 0 32px !important; }
+section { padding-top: 34px !important; padding-bottom: 34px !important; }
+.section-head { margin-bottom: 22px !important; }
+.section-head h2 { font-size: clamp(23px, 2.1vw, 28px) !important; margin: 0 0 6px !important; }
+.section-head p, .lede { font-size: 15px !important; line-height: 1.55; }
+.card { padding: 18px !important; }
+.stat { padding: 16px 18px !important; }
+.stat .num { font-size: 28px !important; }
+.grid, .grid-2, .grid-4, .stat-row { gap: 16px !important; }
+body { font-size: 15.5px; }
+
+/* Hero: calmer, flatter background */
+.hero { background:
+  radial-gradient(900px 360px at 100% -20%, var(--brand-soft) 0%, transparent 55%) !important; }
