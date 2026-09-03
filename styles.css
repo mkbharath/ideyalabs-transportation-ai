@@ -10,10 +10,10 @@
   --bg: #eef2f7;
   --bg-elev: #ffffff;
   --bg-subtle: #eff3f8;
-  --text: #1e2b3b;
-  --text-strong: #0f2038;
-  --text-muted: #52627a;
-  --text-faint: #7688a0;
+  --text: #16222f;
+  --text-strong: #0a1728;
+  --text-muted: #35435a;
+  --text-faint: #52627a;
   --border: #e2e8f1;
   --border-strong: #d3dce8;
 
@@ -1122,3 +1122,49 @@ body { font-size: 15.5px; }
 /* Stat cards get a hover + slightly rounder corners to match */
 .stat { border-radius: 14px !important; transition: box-shadow .18s, transform .18s; }
 .stat:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+/* ============================================================
+   v30 — catchy title, darker text safety-net, colored nav groups
+   ============================================================ */
+
+/* ---- Catchy top-bar wordmark ---- */
+.ab-product { position: relative; }
+.ab-product-name {
+  font-family: var(--font-display);
+  font-weight: 800 !important; font-size: 21px !important; letter-spacing: -.02em;
+  background: linear-gradient(92deg, var(--brand) 0%, var(--brand) 42%, var(--accent) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: var(--brand-text);
+}
+.ab-product::after {
+  content: ""; position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: -6px; width: 46px; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+}
+@media (max-width: 900px){ .ab-product-name { font-size: 17px !important; } .ab-product::after { display:none; } }
+
+/* ---- Darker text everywhere (safety net over the darkened tokens) ---- */
+body, p, li, td, .card p, .detail-card p, .rec-card p, .qa-item .a,
+.ceo-common, .target-why, .ix-common, .merge-item p, .section-head p, .lede,
+.hero .lede, .ws-row .ws-ev, .cap .cap-reuse, .detail-list-full {
+  color: var(--text);
+}
+.qa-item .a, .card p, .detail-card p, .rec-card p, .section-head p, .lede, .hero .lede { font-weight: 450; }
+.section-head h2, section > h2, h1, h2, h3 { color: var(--text-strong); }
+
+/* ---- Sidebar group labels: distinct colors so they stand out ---- */
+.sb-group:nth-child(1) .sb-group-title {
+  color: var(--brand-text) !important;
+  font-size: 12px !important; font-weight: 800 !important; letter-spacing: .1em;
+}
+.sb-group:nth-child(2) .sb-group-title {
+  color: var(--accent-text) !important;
+  font-size: 12px !important; font-weight: 800 !important; letter-spacing: .1em;
+}
+.sb-group:nth-child(1) .sb-group-title::before { background: var(--brand) !important; }
+.sb-group:nth-child(2) .sb-group-title::before { background: var(--accent) !important; }
+.sb-group-title::before {
+  content: ""; display: inline-block; width: 16px; height: 3px; border-radius: 2px;
+  margin-right: 8px; vertical-align: middle;
+}
+.sb-group:nth-child(2) { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--border-strong); }
