@@ -40,22 +40,26 @@
 
   var sidebar =
     '<aside class="sidebar" id="sidebar" aria-label="Primary">'
-    + '<a class="sb-brand" href="index.html#top" aria-label="ideyaLabs home">'
-    +   '<img src="assets/ideyalabs-logo.png" alt="ideyaLabs" class="sb-logo" />'
-    +   '<span class="sb-brand-sub">Transportation AI</span>'
-    + '</a>'
     + '<nav class="sb-nav">' + links + '</nav>'
     + '<div class="sb-footer">'
-    +   '<button id="themeToggle" class="sb-theme" type="button" aria-label="Toggle theme"><span class="sb-theme-ico">🌙</span><span class="sb-theme-lbl">Theme</span></button>'
     +   '<div class="sb-conf">Confidential · Internal</div>'
     + '</div>'
     + '</aside>';
 
+  // Full-width top bar (IT 360 style): logo left, centered product mark,
+  // theme toggle + avatar right, blue->orange gradient underline.
   var topbar =
-    '<div class="mobilebar">'
-    + '<button class="mb-toggle" id="mbToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>'
-    + '<a class="mb-brand" href="index.html#top"><img src="assets/ideyalabs-logo.png" alt="ideyaLabs" /></a>'
-    + '</div>';
+    '<header class="appbar" id="appbar">'
+    + '<div class="ab-left">'
+    +   '<button class="mb-toggle" id="mbToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>'
+    +   '<a class="ab-brand" href="index.html#top" aria-label="ideyaLabs home"><img src="assets/ideyalabs-logo.png" alt="ideyaLabs" /></a>'
+    + '</div>'
+    + '<a class="ab-product" href="index.html#top"><span class="ab-product-name">Transportation AI</span><span class="ab-product-sub">Priority Roadmap</span></a>'
+    + '<div class="ab-right">'
+    +   '<button id="themeToggle" class="ab-theme" type="button" aria-label="Toggle theme"><span class="sb-theme-ico">🌙</span></button>'
+    +   '<span class="ab-avatar" aria-hidden="true">iL</span>'
+    + '</div>'
+    + '</header>';
 
   var scrim = '<div class="sb-scrim" id="sbScrim"></div>';
 
@@ -115,7 +119,7 @@
     document.body.classList.add("has-sidebar");
     var oldHeader = document.querySelector(".site-header");
     if (oldHeader) oldHeader.parentNode.removeChild(oldHeader);
-    document.body.insertAdjacentHTML("afterbegin", sidebar + topbar + scrim);
+    document.body.insertAdjacentHTML("afterbegin", topbar + sidebar + scrim);
 
     var sb = document.getElementById("sidebar");
     var toggle = document.getElementById("mbToggle");
