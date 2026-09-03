@@ -6,15 +6,15 @@
   --font-sans: "Inter", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   /* Light theme (default) */
-  --bg: #f5f7fa;
+  --bg: #eef2f8;
   --bg-elev: #ffffff;
-  --bg-subtle: #eef2f7;
-  --text: #0b1a2b;
-  --text-strong: #05101d;
-  --text-muted: #34435a;
-  --text-faint: #566579;
-  --border: #dbe3ec;
-  --border-strong: #b9c6d6;
+  --bg-subtle: #e7edf5;
+  --text: #081522;
+  --text-strong: #030b15;
+  --text-muted: #1f2d40;
+  --text-faint: #45566c;
+  --border: #cdd8e4;
+  --border-strong: #a6b6c9;
 
   /* Brand = ideyaLabs blue; Accent = ideyaLabs orange */
   --brand: #275e91;
@@ -779,3 +779,66 @@ p, .card p, .detail-card p, .target-why, .crit-desc { color: var(--text); }
 
 /* Table header sharper */
 table.score thead th { font-weight: 800; color: var(--text-strong); }
+
+/* ============================================================
+   Modern polish v22 — brightness + depth overhaul
+   ============================================================ */
+
+/* Bigger, sharper base type */
+body { font-size: 16.5px; line-height: 1.6; color: var(--text); }
+p, li, td, .qa-item .a, .card p, .detail-card p, .target-why, .crit-desc,
+.merge-item p, .ws-row .ws-products, .cap .cap-reuse {
+  color: var(--text) !important;   /* kill washed-out grey body text */
+}
+.text-muted, .section-lead, .lead, .legend, .sb-conf { color: var(--text-muted); }
+
+/* Subtle brand-tinted page backdrop for depth (light) */
+[data-theme="light"] body {
+  background:
+    radial-gradient(1100px 480px at 100% -8%, #dae7f5 0%, transparent 55%),
+    radial-gradient(900px 420px at -5% 4%, #fbe6d3 0%, transparent 48%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Section headings with a bold accent bar */
+section > h2, .section-title {
+  font-size: clamp(26px, 2.6vw, 34px); font-weight: 850; letter-spacing: -0.03em;
+  color: var(--text-strong); position: relative; padding-left: 16px;
+}
+section > h2::before, .section-title::before {
+  content: ""; position: absolute; left: 0; top: .12em; bottom: .12em; width: 5px;
+  border-radius: 4px; background: linear-gradient(var(--brand), var(--accent));
+}
+.eyebrow, .section-eyebrow, .kicker {
+  color: #fff !important; background: var(--accent) !important; font-weight: 800;
+  letter-spacing: .09em;
+}
+
+/* Q&A: sharp bold questions with brand accent, dark readable answers */
+.qa-list { border: 1px solid var(--border-strong); box-shadow: var(--shadow-md); }
+.qa-item { padding: 18px 24px; }
+.qa-item .q {
+  font-weight: 800; color: var(--text-strong) !important; font-size: 16px;
+  border-left: 3px solid var(--brand); padding-left: 12px; line-height: 1.4;
+}
+.qa-item .a { color: var(--text) !important; font-weight: 500; font-size: 15.5px; }
+.qa-item:nth-child(even) { background: color-mix(in srgb, var(--brand) 5%, var(--bg-elev)); }
+
+/* Cards: firmer border + real elevation */
+.card, .stat, .merge-item, .cap, .ws-row, .phase, .target-card, .opp-card, .table-wrap, .qa-list {
+  border-color: var(--border-strong);
+}
+.card, .stat, .target-card, .opp-card { box-shadow: var(--shadow-md); }
+.card:hover, .target-card:hover, .opp-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+
+/* Table: darker header text, bold names, zebra rows */
+table.score { font-size: 13.5px; }
+table.score thead th { color: var(--text-strong) !important; font-weight: 800; font-size: 12px; }
+table.score td.name-col { font-weight: 750; color: var(--text-strong); }
+table.score tbody td { color: var(--text); }
+table.score tbody tr:nth-child(even) { background: color-mix(in srgb, var(--brand) 4%, transparent); }
+
+/* Links a touch bolder */
+a { font-weight: 550; }
+.qa-item .a a, .card a, td a { font-weight: 650; color: var(--brand-text); }
