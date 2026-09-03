@@ -59,15 +59,16 @@
 
   var scrim = '<div class="sb-scrim" id="sbScrim"></div>';
 
+  var spyState = { activate: null, lockUntil: 0 };
+
   function setupScrollSpy(sb){
     if (!isIndex) return;
     var linkFor = {};
-    // ordered list of {id, el}; "top" (the <main> wrapper) is the Overview anchor
     var sections = [];
     sb.querySelectorAll(".sb-link[data-target]").forEach(function(a){
       var id = a.getAttribute("data-target");
       linkFor[id] = a;
-      if (id === "top") return;              // Overview handled separately (scroll near 0)
+      if (id === "top") return;              // Overview = scrolled near the top
       var el = document.getElementById(id);
       if (el) sections.push({ id: id, el: el });
     });
@@ -75,34 +76,38 @@
 
     function activate(id){
       var cur = sb.querySelector(".sb-link.active");
-      if (cur && cur.getAttribute("data-target") === id) return; // no-op if unchanged
+      if (cur && cur.getAttribute("data-target") === id) return;
       sb.querySelectorAll(".sb-link.active").forEach(function(a){ a.classList.remove("active"); });
       var a = linkFor[id];
       if (a) a.classList.add("active");
     }
+    spyState.activate = activate;
 
-    var LINE = 140; // reference line below the viewport top
     var ticking = false;
     function update(){
       ticking = false;
+      // while a click-scroll is settling, don't let the spy override the choice
+      if (Date.now() < spyState.lockUntil) return;
+
       var scrollBottom = window.innerHeight + window.scrollY;
-      // at the very bottom, force the last section
       if (scrollBottom >= document.body.scrollHeight - 4) {
         activate(sections[sections.length - 1].id); return;
       }
-      // find the last section whose top has crossed the reference line
+      // "current" = the last section whose top is above ~35% of the viewport height.
+      // Using a viewport fraction (not a fixed px) keeps it aligned with what the
+      // reader actually sees and tolerates scroll-padding-top offsets.
+      var LINE = Math.max(120, window.innerHeight * 0.35);
       var currentId = "top";
       for (var i = 0; i < sections.length; i++) {
         var top = sections[i].el.getBoundingClientRect().top;
         if (top <= LINE) currentId = sections[i].id;
-        else break; // sections are in document order; first one below the line stops us
+        else break;
       }
       activate(currentId);
     }
     function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(update); } }
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
-    // initial state (respect an incoming #hash, else compute from scroll position)
     update();
   }
 
@@ -123,8 +128,11 @@
       if (!link) return;
       open(false);
       if (link.hasAttribute("data-target")) {
+        // immediate feedback + lock the spy so the smooth-scroll animation
+        // doesn't briefly re-activate the previous section while settling
         sb.querySelectorAll(".sb-link.active").forEach(function(a){ a.classList.remove("active"); });
         link.classList.add("active");
+        spyState.lockUntil = Date.now() + 900;
       }
     });
 
