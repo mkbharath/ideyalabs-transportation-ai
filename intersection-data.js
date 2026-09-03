@@ -44,7 +44,7 @@ window.INTERSECTION = {
     { id:"hodlmayr", name:"Hödlmayr International", existing:true, country:"Austria", geo:"Europe", segment:"Automotive / Vehicle Logistics", mode:"Finished-vehicle rail + road + VLCs",
       note:"Existing client — automotive/vehicle logistics, NOT freight. Solutions apply only when adapted." },
     { id:"estes", name:"Estes Express Lines", existing:false, country:"USA", geo:"United States", segment:"LTL", mode:"National LTL, 300+ terminals",
-      note:"Tier A prospect with a ready-made ideyaLabs network-analysis report + deck (not a customer)." },
+      note:"Tier A prospect (not a customer) — large national LTL carrier." },
     { id:"schneider", name:"Schneider National", existing:false, country:"USA", geo:"United States", segment:"FTL/Intermodal", mode:"Truckload + intermodal + logistics",
       note:"Tier A prospect. Proven appetite: EXL AI partnership cut appointment cycle time 50%." },
     { id:"tforce", name:"TForce Freight (TFI)", existing:false, country:"USA/Canada", geo:"North America", segment:"LTL", mode:"19 acquired LTL operating companies",
